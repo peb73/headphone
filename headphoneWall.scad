@@ -1,10 +1,6 @@
-use <vis.scad>;
-
 $fn=100;
 
-vis(3,120,2.5);
-
-
+/*
 radius = 70;
 height = 40;
 //width = height/1.61;
@@ -36,3 +32,4 @@ intersection(){
 		}
 	}
 }
+*/

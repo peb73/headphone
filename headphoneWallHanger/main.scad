@@ -1,4 +1,5 @@
 use <./background.scad>;
+use <./front.scad>;
 
 $fn=100;
 
@@ -15,7 +16,6 @@ intersection(){
 	}
 	difference(){
 		union(){
-			//cube([width,thickness,height]);
 			translate([width/2,thickness/2,height/2]){
 				background(height,width,thickness);
 			}
@@ -25,10 +25,10 @@ intersection(){
 					cylinder(40, (radius+thickness),(radius+thickness), false);
 				}
 			}
+			translate([width/2,-40+thickness*3/2,height/3]){
+				front(height/3,width/2,thickness, radius);
+			}
 		}
-
-		screw1();
-		screw2();
 
 		translate([width/2,7,-translateR]){
 			rotate([90,0,0]){

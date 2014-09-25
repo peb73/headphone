@@ -3,37 +3,47 @@ use <./front.scad>;
 
 $fn=100;
 
-radius = 70;
-height = 40;
-//width = height/1.61;
-width = 60;
-thickness = 6;
-translateR = sqrt((radius+thickness)*(radius+thickness)-(width*width/4))-thickness;
-
-intersection(){
-	translate([0,-200,0]){
-		cube([width,400,400],false);
-	}
-	difference(){
-		union(){
-			translate([width/2,thickness/2,height/2]){
-				background(height,width,thickness);
-			}
-
-			translate([width/2,thickness,-translateR]){
-				rotate([90,0,0]){
-					cylinder(40, (radius+thickness),(radius+thickness), false);
+module headphoneWallHanger(){
+	
+	radius = 70;
+	height = 40;
+	//width = height/1.61;
+	width = 60;
+	thickness = 6;
+	translateR = sqrt((radius+thickness)*(radius+thickness)-(width*width/4))-thickness;
+	deep = 40;
+	intersection(){
+		translate([0,0,200]){
+			cube([width,400,400],true);
+		}
+		difference(){
+			union(){
+				//add background
+				translate([0,deep/2-thickness/2,height/2]){
+					background(height,width,thickness);
+				}
+	
+				//add cylinder
+				translate([0,0,-translateR]){
+					rotate([90,0,0]){
+						cylinder(40, (radius+thickness),(radius+thickness), true);
+					}
+				}
+	
+				//add front
+				translate([0,-(deep/2-thickness/2),height/3]){
+					front(height/3,width/3,thickness, radius);
 				}
 			}
-			translate([width/2,-40+thickness*3/2,height/3]){
-				front(height/3,width/3,thickness, radius);
-			}
-		}
-
-		translate([width/2,7,-translateR]){
-			rotate([90,0,0]){
-				cylinder(48,radius,radius,false);
+	
+			translate([0,0,-translateR]){
+				rotate([90,0,0]){
+					cylinder(50,radius,radius,true);
+				}
 			}
 		}
 	}
-}
+
+};
+
+headphoneWallHanger();

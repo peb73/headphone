@@ -11,7 +11,7 @@ module headphoneWallHanger(){
 	width = 60;
 	thickness = 6;
 	translateR = sqrt((radius+thickness)*(radius+thickness)-(width*width/4))-thickness;
-	deep = 40;
+	deep = 45;
 	intersection(){
 		translate([0,0,200]){
 			cube([width,400,400],true);
@@ -26,7 +26,7 @@ module headphoneWallHanger(){
 				//add cylinder
 				translate([0,0,-translateR]){
 					rotate([90,0,0]){
-						cylinder(40, (radius+thickness),(radius+thickness), true);
+						cylinder(deep, (radius+thickness),(radius+thickness), true);
 					}
 				}
 	
@@ -38,7 +38,7 @@ module headphoneWallHanger(){
 	
 			translate([0,0,-translateR]){
 				rotate([90,0,0]){
-					cylinder(50,radius,radius,true);
+					cylinder(deep+10,radius,radius,true);
 				}
 			}
 		}

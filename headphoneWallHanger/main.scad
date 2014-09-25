@@ -26,7 +26,7 @@ intersection(){
 				}
 			}
 			translate([width/2,-40+thickness*3/2,height/3]){
-				front(height/3,width/2,thickness, radius);
+				front(height/3,width/3,thickness, radius);
 			}
 		}
 
